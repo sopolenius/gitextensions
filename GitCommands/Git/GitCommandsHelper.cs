@@ -377,8 +377,8 @@ namespace GitCommands
             {
                 if (!string.IsNullOrEmpty(stdInput))
                 {
-                	var r = new StreamWriter(process.StandardInput.BaseStream, Settings.Encoding);
-					r.Write(stdInput);
+                    var r = new StreamWriter(process.StandardInput.BaseStream, Settings.Encoding);
+                    r.Write(stdInput);
                     r.Close();
                 }
 
@@ -2076,7 +2076,7 @@ namespace GitCommands
         public static string UnstageFiles(List<GitItemStatus> files)
         {
             var gitCommand = new GitCommandsInstance();
-        	StreamWriter inputWriter = null;
+            StreamWriter inputWriter = null;
             var output = "";
 
             Process process1 = null;
@@ -2086,13 +2086,13 @@ namespace GitCommands
                     continue;
                 if (process1 == null)
                     process1 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --info-only --index-info");
-				inputWriter = new StreamWriter(process1.StandardInput.BaseStream, Settings.Encoding);
-				inputWriter.WriteLine("0 0000000000000000000000000000000000000000\t\"" + FixPath(file.Name) +
+                inputWriter = new StreamWriter(process1.StandardInput.BaseStream, Settings.Encoding);
+                inputWriter.WriteLine("0 0000000000000000000000000000000000000000\t\"" + FixPath(file.Name) +
                                                  "\"");
             }
             if (process1 != null)
             {
-				inputWriter.Close();
+                inputWriter.Close();
                 process1.WaitForExit();
             }
 
@@ -2106,12 +2106,12 @@ namespace GitCommands
                     continue;
                 if (process2 == null)
                     process2 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --force-remove --stdin");
-				inputWriter = new StreamWriter(process2.StandardInput.BaseStream);
-				inputWriter.WriteLine("\"" + FixPath(file.Name) + "\"");
+                inputWriter = new StreamWriter(process2.StandardInput.BaseStream);
+                inputWriter.WriteLine("\"" + FixPath(file.Name) + "\"");
             }
             if (process2 != null)
             {
-				inputWriter.Close();
+                inputWriter.Close();
                 process2.WaitForExit();
             }
 
