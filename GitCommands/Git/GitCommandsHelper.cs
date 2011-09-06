@@ -377,8 +377,9 @@ namespace GitCommands
             {
                 if (!string.IsNullOrEmpty(stdInput))
                 {
-                    process.StandardInput.Write(stdInput);
-                    process.StandardInput.Close();
+                	var r = new StreamWriter(process.StandardInput.BaseStream, Settings.Encoding);
+					r.Write(stdInput);
+                    r.Close();
                 }
 
                 stdOutput = process.StandardOutput.ReadToEnd();
@@ -2024,7 +2025,7 @@ namespace GitCommands
             var output = "";
 
             Process process1 = null;
-        	StreamWriter outputStream = null;
+            StreamWriter outputStream = null;
             foreach (var file in files)
             {
                 if (file.IsDeleted)
@@ -2032,12 +2033,12 @@ namespace GitCommands
                 if (process1 == null)
                     process1 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --add --stdin");
 
-				outputStream = new StreamWriter(process1.StandardInput.BaseStream, Settings.Encoding);
+                outputStream = new StreamWriter(process1.StandardInput.BaseStream, Settings.Encoding);
                 outputStream.WriteLine("\"" + FixPath(file.Name) + "\"");
             }
             if (process1 != null)
             {
-				outputStream.Close();
+                outputStream.Close();
                 process1.WaitForExit();
 
                 if (gitCommand.Output != null)
@@ -2051,12 +2052,12 @@ namespace GitCommands
                     continue;
                 if (process2 == null)
                     process2 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --remove --stdin");
-				outputStream = new StreamWriter(process2.StandardInput.BaseStream, Settings.Encoding);
-				outputStream.WriteLine("\"" + FixPath(file.Name) + "\"");
+                outputStream = new StreamWriter(process2.StandardInput.BaseStream, Settings.Encoding);
+                outputStream.WriteLine("\"" + FixPath(file.Name) + "\"");
             }
             if (process2 != null)
             {
-				outputStream.Close();
+                outputStream.Close();
                 process2.WaitForExit();
 
                 if (gitCommand.Output != null)
@@ -2075,7 +2076,7 @@ namespace GitCommands
         public static string UnstageFiles(List<GitItemStatus> files)
         {
             var gitCommand = new GitCommandsInstance();
-
+        	StreamWriter inputWriter = null;
             var output = "";
 
             Process process1 = null;
@@ -2085,13 +2086,13 @@ namespace GitCommands
                     continue;
                 if (process1 == null)
                     process1 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --info-only --index-info");
-
-                process1.StandardInput.WriteLine("0 0000000000000000000000000000000000000000\t\"" + FixPath(file.Name) +
+				inputWriter = new StreamWriter(process1.StandardInput.BaseStream, Settings.Encoding);
+				inputWriter.WriteLine("0 0000000000000000000000000000000000000000\t\"" + FixPath(file.Name) +
                                                  "\"");
             }
             if (process1 != null)
             {
-                process1.StandardInput.Close();
+				inputWriter.Close();
                 process1.WaitForExit();
             }
 
@@ -2105,11 +2106,12 @@ namespace GitCommands
                     continue;
                 if (process2 == null)
                     process2 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --force-remove --stdin");
-                process2.StandardInput.WriteLine("\"" + FixPath(file.Name) + "\"");
+				inputWriter = new StreamWriter(process2.StandardInput.BaseStream);
+				inputWriter.WriteLine("\"" + FixPath(file.Name) + "\"");
             }
             if (process2 != null)
             {
-                process2.StandardInput.Close();
+				inputWriter.Close();
                 process2.WaitForExit();
             }
 
