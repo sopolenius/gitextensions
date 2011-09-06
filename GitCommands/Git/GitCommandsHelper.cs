@@ -2024,6 +2024,7 @@ namespace GitCommands
             var output = "";
 
             Process process1 = null;
+        	StreamWriter outputStream = null;
             foreach (var file in files)
             {
                 if (file.IsDeleted)
@@ -2031,11 +2032,12 @@ namespace GitCommands
                 if (process1 == null)
                     process1 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --add --stdin");
 
-                process1.StandardInput.WriteLine("\"" + FixPath(file.Name) + "\"");
+				outputStream = new StreamWriter(process1.StandardInput.BaseStream, Settings.Encoding);
+                outputStream.WriteLine("\"" + FixPath(file.Name) + "\"");
             }
             if (process1 != null)
             {
-                process1.StandardInput.Close();
+				outputStream.Close();
                 process1.WaitForExit();
 
                 if (gitCommand.Output != null)
@@ -2049,11 +2051,12 @@ namespace GitCommands
                     continue;
                 if (process2 == null)
                     process2 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --remove --stdin");
-                process2.StandardInput.WriteLine("\"" + FixPath(file.Name) + "\"");
+				outputStream = new StreamWriter(process2.StandardInput.BaseStream, Settings.Encoding);
+				outputStream.WriteLine("\"" + FixPath(file.Name) + "\"");
             }
             if (process2 != null)
             {
-                process2.StandardInput.Close();
+				outputStream.Close();
                 process2.WaitForExit();
 
                 if (gitCommand.Output != null)
