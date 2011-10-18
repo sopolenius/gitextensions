@@ -95,6 +95,8 @@ namespace GitUI
             this.BrowseGitPath = new System.Windows.Forms.Button();
             this.GitBinPath = new System.Windows.Forms.TextBox();
             this.TabPageGitExtensions = new System.Windows.Forms.TabPage();
+            this.label58 = new System.Windows.Forms.Label();
+            this.focusControlOnHover = new System.Windows.Forms.CheckBox();
             this.truncatePathMethod = new System.Windows.Forms.Label();
             this._NO_TRANSLATE_truncatePathMethod = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -283,8 +285,7 @@ namespace GitUI
             this.repositoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.diffFontDialog = new System.Windows.Forms.FontDialog();
-            this.label58 = new System.Windows.Forms.Label();
-            this.focusControlOnHover = new System.Windows.Forms.CheckBox();
+            this.downloadMsysgit = new System.Windows.Forms.LinkLabel();
             this.LocalSettings.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.InvalidGitPathLocal.SuspendLayout();
@@ -369,7 +370,7 @@ namespace GitUI
             this.localAutoCrlfFalse.AutoSize = true;
             this.localAutoCrlfFalse.Location = new System.Drawing.Point(5, 74);
             this.localAutoCrlfFalse.Name = "localAutoCrlfFalse";
-            this.localAutoCrlfFalse.Size = new System.Drawing.Size(313, 17);
+            this.localAutoCrlfFalse.Size = new System.Drawing.Size(319, 17);
             this.localAutoCrlfFalse.TabIndex = 2;
             this.localAutoCrlfFalse.TabStop = true;
             this.localAutoCrlfFalse.Text = "Checkout as-is, commit as-is (\"core.autocrlf\"  is set to \"false\")";
@@ -380,7 +381,7 @@ namespace GitUI
             this.localAutoCrlfInput.AutoSize = true;
             this.localAutoCrlfInput.Location = new System.Drawing.Point(5, 48);
             this.localAutoCrlfInput.Name = "localAutoCrlfInput";
-            this.localAutoCrlfInput.Size = new System.Drawing.Size(397, 17);
+            this.localAutoCrlfInput.Size = new System.Drawing.Size(405, 17);
             this.localAutoCrlfInput.TabIndex = 1;
             this.localAutoCrlfInput.TabStop = true;
             this.localAutoCrlfInput.Text = "Checkout as-is, commit Unix-style line endings (\"core.autocrlf\"  is set to \"input" +
@@ -392,7 +393,7 @@ namespace GitUI
             this.localAutoCrlfTrue.AutoSize = true;
             this.localAutoCrlfTrue.Location = new System.Drawing.Point(5, 22);
             this.localAutoCrlfTrue.Name = "localAutoCrlfTrue";
-            this.localAutoCrlfTrue.Size = new System.Drawing.Size(439, 17);
+            this.localAutoCrlfTrue.Size = new System.Drawing.Size(449, 17);
             this.localAutoCrlfTrue.TabIndex = 0;
             this.localAutoCrlfTrue.TabStop = true;
             this.localAutoCrlfTrue.Text = "Checkout Windows-style, commit Unix-style line endings (\"core.autocrlf\"  is set t" +
@@ -931,9 +932,9 @@ namespace GitUI
             this.groupBox8.Controls.Add(this.userprofileHome);
             this.groupBox8.Controls.Add(this.defaultHome);
             this.groupBox8.Controls.Add(this.label51);
-            this.groupBox8.Location = new System.Drawing.Point(5, 108);
+            this.groupBox8.Location = new System.Drawing.Point(5, 134);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(813, 145);
+            this.groupBox8.Size = new System.Drawing.Size(813, 154);
             this.groupBox8.TabIndex = 10;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Environment";
@@ -941,7 +942,7 @@ namespace GitUI
             // otherHomeBrowse
             // 
             this.otherHomeBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.otherHomeBrowse.Location = new System.Drawing.Point(732, 100);
+            this.otherHomeBrowse.Location = new System.Drawing.Point(732, 117);
             this.otherHomeBrowse.Name = "otherHomeBrowse";
             this.otherHomeBrowse.Size = new System.Drawing.Size(75, 25);
             this.otherHomeBrowse.TabIndex = 10;
@@ -953,7 +954,7 @@ namespace GitUI
             // 
             this.otherHomeDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.otherHomeDir.Location = new System.Drawing.Point(88, 102);
+            this.otherHomeDir.Location = new System.Drawing.Point(88, 119);
             this.otherHomeDir.Name = "otherHomeDir";
             this.otherHomeDir.Size = new System.Drawing.Size(641, 21);
             this.otherHomeDir.TabIndex = 4;
@@ -961,9 +962,9 @@ namespace GitUI
             // otherHome
             // 
             this.otherHome.AutoSize = true;
-            this.otherHome.Location = new System.Drawing.Point(11, 103);
+            this.otherHome.Location = new System.Drawing.Point(11, 120);
             this.otherHome.Name = "otherHome";
-            this.otherHome.Size = new System.Drawing.Size(51, 17);
+            this.otherHome.Size = new System.Drawing.Size(53, 17);
             this.otherHome.TabIndex = 3;
             this.otherHome.TabStop = true;
             this.otherHome.Text = "Other";
@@ -973,9 +974,9 @@ namespace GitUI
             // userprofileHome
             // 
             this.userprofileHome.AutoSize = true;
-            this.userprofileHome.Location = new System.Drawing.Point(11, 80);
+            this.userprofileHome.Location = new System.Drawing.Point(11, 97);
             this.userprofileHome.Name = "userprofileHome";
-            this.userprofileHome.Size = new System.Drawing.Size(166, 17);
+            this.userprofileHome.Size = new System.Drawing.Size(157, 17);
             this.userprofileHome.TabIndex = 2;
             this.userprofileHome.TabStop = true;
             this.userprofileHome.Text = "Set HOME to USERPROFILE";
@@ -984,7 +985,7 @@ namespace GitUI
             // defaultHome
             // 
             this.defaultHome.AutoSize = true;
-            this.defaultHome.Location = new System.Drawing.Point(11, 57);
+            this.defaultHome.Location = new System.Drawing.Point(11, 74);
             this.defaultHome.Name = "defaultHome";
             this.defaultHome.Size = new System.Drawing.Size(129, 17);
             this.defaultHome.TabIndex = 1;
@@ -1005,6 +1006,7 @@ namespace GitUI
             // 
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.downloadMsysgit);
             this.groupBox7.Controls.Add(this.label50);
             this.groupBox7.Controls.Add(this.BrowseGitBinPath);
             this.groupBox7.Controls.Add(this.label13);
@@ -1014,7 +1016,7 @@ namespace GitUI
             this.groupBox7.Controls.Add(this.GitBinPath);
             this.groupBox7.Location = new System.Drawing.Point(5, 4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(813, 98);
+            this.groupBox7.Size = new System.Drawing.Size(813, 115);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Git";
@@ -1137,6 +1139,25 @@ namespace GitUI
             this.TabPageGitExtensions.Text = "Git extensions";
             this.TabPageGitExtensions.UseVisualStyleBackColor = true;
             this.TabPageGitExtensions.Click += new System.EventHandler(this.TabPageGitExtensions_Click);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(32, 376);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(301, 13);
+            this.label58.TabIndex = 48;
+            this.label58.Text = "Focus control on hover to enable scroll without having to click";
+            // 
+            // focusControlOnHover
+            // 
+            this.focusControlOnHover.AutoSize = true;
+            this.focusControlOnHover.Location = new System.Drawing.Point(11, 376);
+            this.focusControlOnHover.Name = "focusControlOnHover";
+            this.focusControlOnHover.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.focusControlOnHover.Size = new System.Drawing.Size(15, 14);
+            this.focusControlOnHover.TabIndex = 47;
+            this.focusControlOnHover.UseVisualStyleBackColor = true;
             // 
             // truncatePathMethod
             // 
@@ -1567,11 +1588,8 @@ namespace GitUI
             // 
             // noImageService
             // 
+            this.noImageService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.noImageService.FormattingEnabled = true;
-            this.noImageService.Items.AddRange(new object[] {
-            "Identicon",
-            "Wavatar",
-            "MonsterId"});
             this.noImageService.Location = new System.Drawing.Point(149, 101);
             this.noImageService.Name = "noImageService";
             this.noImageService.Size = new System.Drawing.Size(142, 21);
@@ -1652,7 +1670,7 @@ namespace GitUI
             this.ShowAuthorGravatar.AutoSize = true;
             this.ShowAuthorGravatar.Location = new System.Drawing.Point(7, 20);
             this.ShowAuthorGravatar.Name = "ShowAuthorGravatar";
-            this.ShowAuthorGravatar.Size = new System.Drawing.Size(195, 17);
+            this.ShowAuthorGravatar.Size = new System.Drawing.Size(202, 17);
             this.ShowAuthorGravatar.TabIndex = 0;
             this.ShowAuthorGravatar.Text = "Get author image from gravatar.com";
             this.ShowAuthorGravatar.UseVisualStyleBackColor = true;
@@ -1746,7 +1764,7 @@ namespace GitUI
             this.RandomIcon.AutoSize = true;
             this.RandomIcon.Location = new System.Drawing.Point(111, 250);
             this.RandomIcon.Name = "RandomIcon";
-            this.RandomIcon.Size = new System.Drawing.Size(65, 17);
+            this.RandomIcon.Size = new System.Drawing.Size(64, 17);
             this.RandomIcon.TabIndex = 6;
             this.RandomIcon.TabStop = true;
             this.RandomIcon.Text = "Random";
@@ -1758,7 +1776,7 @@ namespace GitUI
             this.YellowIcon.AutoSize = true;
             this.YellowIcon.Location = new System.Drawing.Point(111, 222);
             this.YellowIcon.Name = "YellowIcon";
-            this.YellowIcon.Size = new System.Drawing.Size(56, 17);
+            this.YellowIcon.Size = new System.Drawing.Size(55, 17);
             this.YellowIcon.TabIndex = 5;
             this.YellowIcon.TabStop = true;
             this.YellowIcon.Text = "Yellow";
@@ -1770,7 +1788,7 @@ namespace GitUI
             this.RedIcon.AutoSize = true;
             this.RedIcon.Location = new System.Drawing.Point(111, 194);
             this.RedIcon.Name = "RedIcon";
-            this.RedIcon.Size = new System.Drawing.Size(45, 17);
+            this.RedIcon.Size = new System.Drawing.Size(44, 17);
             this.RedIcon.TabIndex = 4;
             this.RedIcon.TabStop = true;
             this.RedIcon.Text = "Red";
@@ -1806,7 +1824,7 @@ namespace GitUI
             this.BlueIcon.AutoSize = true;
             this.BlueIcon.Location = new System.Drawing.Point(111, 109);
             this.BlueIcon.Name = "BlueIcon";
-            this.BlueIcon.Size = new System.Drawing.Size(46, 17);
+            this.BlueIcon.Size = new System.Drawing.Size(45, 17);
             this.BlueIcon.TabIndex = 1;
             this.BlueIcon.TabStop = true;
             this.BlueIcon.Text = "Blue";
@@ -1818,7 +1836,7 @@ namespace GitUI
             this.DefaultIcon.AutoSize = true;
             this.DefaultIcon.Location = new System.Drawing.Point(111, 53);
             this.DefaultIcon.Name = "DefaultIcon";
-            this.DefaultIcon.Size = new System.Drawing.Size(59, 17);
+            this.DefaultIcon.Size = new System.Drawing.Size(60, 17);
             this.DefaultIcon.TabIndex = 0;
             this.DefaultIcon.TabStop = true;
             this.DefaultIcon.Text = "Default";
@@ -1853,7 +1871,7 @@ namespace GitUI
             this.DrawNonRelativesTextGray.AutoSize = true;
             this.DrawNonRelativesTextGray.Location = new System.Drawing.Point(9, 120);
             this.DrawNonRelativesTextGray.Name = "DrawNonRelativesTextGray";
-            this.DrawNonRelativesTextGray.Size = new System.Drawing.Size(157, 17);
+            this.DrawNonRelativesTextGray.Size = new System.Drawing.Size(164, 17);
             this.DrawNonRelativesTextGray.TabIndex = 17;
             this.DrawNonRelativesTextGray.Text = "Draw non relatives text gray";
             this.DrawNonRelativesTextGray.UseVisualStyleBackColor = true;
@@ -1863,7 +1881,7 @@ namespace GitUI
             this.DrawNonRelativesGray.AutoSize = true;
             this.DrawNonRelativesGray.Location = new System.Drawing.Point(9, 96);
             this.DrawNonRelativesGray.Name = "DrawNonRelativesGray";
-            this.DrawNonRelativesGray.Size = new System.Drawing.Size(167, 17);
+            this.DrawNonRelativesGray.Size = new System.Drawing.Size(172, 17);
             this.DrawNonRelativesGray.TabIndex = 16;
             this.DrawNonRelativesGray.Text = "Draw non relatives graph gray";
             this.DrawNonRelativesGray.UseVisualStyleBackColor = true;
@@ -1896,7 +1914,7 @@ namespace GitUI
             this.BranchBorders.AutoSize = true;
             this.BranchBorders.Location = new System.Drawing.Point(9, 71);
             this.BranchBorders.Name = "BranchBorders";
-            this.BranchBorders.Size = new System.Drawing.Size(125, 17);
+            this.BranchBorders.Size = new System.Drawing.Size(127, 17);
             this.BranchBorders.TabIndex = 13;
             this.BranchBorders.Text = "Draw branch borders";
             this.BranchBorders.UseVisualStyleBackColor = true;
@@ -2027,7 +2045,7 @@ namespace GitUI
             this.diffFontChangeButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.diffFontChangeButton.Location = new System.Drawing.Point(132, 164);
             this.diffFontChangeButton.Name = "diffFontChangeButton";
-            this.diffFontChangeButton.Size = new System.Drawing.Size(64, 23);
+            this.diffFontChangeButton.Size = new System.Drawing.Size(66, 23);
             this.diffFontChangeButton.TabIndex = 14;
             this.diffFontChangeButton.Text = "font name";
             this.diffFontChangeButton.UseVisualStyleBackColor = true;
@@ -2195,7 +2213,7 @@ namespace GitUI
             // 
             this.BrowseCommitTemplate.Location = new System.Drawing.Point(506, 285);
             this.BrowseCommitTemplate.Name = "BrowseCommitTemplate";
-            this.BrowseCommitTemplate.Size = new System.Drawing.Size(75, 25);
+            this.BrowseCommitTemplate.Size = new System.Drawing.Size(108, 25);
             this.BrowseCommitTemplate.TabIndex = 34;
             this.BrowseCommitTemplate.Text = "Browse";
             this.BrowseCommitTemplate.UseVisualStyleBackColor = true;
@@ -2236,7 +2254,7 @@ namespace GitUI
             this.globalAutoCrlfFalse.AutoSize = true;
             this.globalAutoCrlfFalse.Location = new System.Drawing.Point(5, 74);
             this.globalAutoCrlfFalse.Name = "globalAutoCrlfFalse";
-            this.globalAutoCrlfFalse.Size = new System.Drawing.Size(313, 17);
+            this.globalAutoCrlfFalse.Size = new System.Drawing.Size(319, 17);
             this.globalAutoCrlfFalse.TabIndex = 2;
             this.globalAutoCrlfFalse.TabStop = true;
             this.globalAutoCrlfFalse.Text = "Checkout as-is, commit as-is (\"core.autocrlf\"  is set to \"false\")";
@@ -2247,7 +2265,7 @@ namespace GitUI
             this.globalAutoCrlfInput.AutoSize = true;
             this.globalAutoCrlfInput.Location = new System.Drawing.Point(5, 48);
             this.globalAutoCrlfInput.Name = "globalAutoCrlfInput";
-            this.globalAutoCrlfInput.Size = new System.Drawing.Size(397, 17);
+            this.globalAutoCrlfInput.Size = new System.Drawing.Size(405, 17);
             this.globalAutoCrlfInput.TabIndex = 1;
             this.globalAutoCrlfInput.TabStop = true;
             this.globalAutoCrlfInput.Text = "Checkout as-is, commit Unix-style line endings (\"core.autocrlf\"  is set to \"input" +
@@ -2259,7 +2277,7 @@ namespace GitUI
             this.globalAutoCrlfTrue.AutoSize = true;
             this.globalAutoCrlfTrue.Location = new System.Drawing.Point(5, 22);
             this.globalAutoCrlfTrue.Name = "globalAutoCrlfTrue";
-            this.globalAutoCrlfTrue.Size = new System.Drawing.Size(439, 17);
+            this.globalAutoCrlfTrue.Size = new System.Drawing.Size(449, 17);
             this.globalAutoCrlfTrue.TabIndex = 0;
             this.globalAutoCrlfTrue.TabStop = true;
             this.globalAutoCrlfTrue.Text = "Checkout Windows-style, commit Unix-style line endings (\"core.autocrlf\"  is set t" +
@@ -2306,7 +2324,7 @@ namespace GitUI
             // 
             this.BrowseDiffTool.Location = new System.Drawing.Point(506, 229);
             this.BrowseDiffTool.Name = "BrowseDiffTool";
-            this.BrowseDiffTool.Size = new System.Drawing.Size(75, 25);
+            this.BrowseDiffTool.Size = new System.Drawing.Size(108, 25);
             this.BrowseDiffTool.TabIndex = 27;
             this.BrowseDiffTool.Text = "Browse";
             this.BrowseDiffTool.UseVisualStyleBackColor = true;
@@ -2441,7 +2459,7 @@ namespace GitUI
             // 
             this.BrowseMergeTool.Location = new System.Drawing.Point(506, 117);
             this.BrowseMergeTool.Name = "BrowseMergeTool";
-            this.BrowseMergeTool.Size = new System.Drawing.Size(75, 25);
+            this.BrowseMergeTool.Size = new System.Drawing.Size(108, 25);
             this.BrowseMergeTool.TabIndex = 13;
             this.BrowseMergeTool.Text = "Browse";
             this.BrowseMergeTool.UseVisualStyleBackColor = true;
@@ -2726,7 +2744,7 @@ namespace GitUI
             this.Other.AutoSize = true;
             this.Other.Location = new System.Drawing.Point(9, 81);
             this.Other.Name = "Other";
-            this.Other.Size = new System.Drawing.Size(98, 17);
+            this.Other.Size = new System.Drawing.Size(100, 17);
             this.Other.TabIndex = 3;
             this.Other.Text = "Other ssh client";
             this.Other.UseVisualStyleBackColor = true;
@@ -2748,7 +2766,7 @@ namespace GitUI
             this.OpenSSH.AutoSize = true;
             this.OpenSSH.Location = new System.Drawing.Point(9, 50);
             this.OpenSSH.Name = "OpenSSH";
-            this.OpenSSH.Size = new System.Drawing.Size(73, 17);
+            this.OpenSSH.Size = new System.Drawing.Size(70, 17);
             this.OpenSSH.TabIndex = 1;
             this.OpenSSH.Text = "OpenSSH";
             this.OpenSSH.UseVisualStyleBackColor = true;
@@ -2760,7 +2778,7 @@ namespace GitUI
             this.Putty.Checked = true;
             this.Putty.Location = new System.Drawing.Point(9, 20);
             this.Putty.Name = "Putty";
-            this.Putty.Size = new System.Drawing.Size(59, 17);
+            this.Putty.Size = new System.Drawing.Size(55, 17);
             this.Putty.TabIndex = 0;
             this.Putty.TabStop = true;
             this.Putty.Text = "PuTTY";
@@ -2814,7 +2832,7 @@ namespace GitUI
             this.sbtn_icon.ContextMenuStrip = this.contextMenuStrip_SplitButton;
             this.sbtn_icon.Location = new System.Drawing.Point(365, 412);
             this.sbtn_icon.Name = "sbtn_icon";
-            this.sbtn_icon.Size = new System.Drawing.Size(92, 23);
+            this.sbtn_icon.Size = new System.Drawing.Size(92, 25);
             this.sbtn_icon.SplitMenuStrip = this.contextMenuStrip_SplitButton;
             this.sbtn_icon.TabIndex = 22;
             this.sbtn_icon.Text = "Select icon";
@@ -2831,31 +2849,31 @@ namespace GitUI
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
             this.contextMenuStrip_SplitButton.Name = "contextMenuStrip1";
-            this.contextMenuStrip_SplitButton.Size = new System.Drawing.Size(180, 92);
+            this.contextMenuStrip_SplitButton.Size = new System.Drawing.Size(169, 70);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.toolStripMenuItem1.Text = "toolStripMenuItem1";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(168, 22);
             this.toolStripMenuItem2.Text = "toolStripMenuItem2";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(168, 22);
             this.toolStripMenuItem3.Text = "toolStripMenuItem3";
             // 
             // scriptNeedsConfirmation
             // 
             this.scriptNeedsConfirmation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.scriptNeedsConfirmation.AutoSize = true;
-            this.scriptNeedsConfirmation.Location = new System.Drawing.Point(107, 445);
+            this.scriptNeedsConfirmation.Location = new System.Drawing.Point(107, 447);
             this.scriptNeedsConfirmation.Name = "scriptNeedsConfirmation";
             this.scriptNeedsConfirmation.Size = new System.Drawing.Size(122, 17);
             this.scriptNeedsConfirmation.TabIndex = 21;
@@ -2867,7 +2885,7 @@ namespace GitUI
             // 
             this.labelOnEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelOnEvent.AutoSize = true;
-            this.labelOnEvent.Location = new System.Drawing.Point(8, 417);
+            this.labelOnEvent.Location = new System.Drawing.Point(8, 419);
             this.labelOnEvent.Name = "labelOnEvent";
             this.labelOnEvent.Size = new System.Drawing.Size(56, 13);
             this.labelOnEvent.TabIndex = 20;
@@ -2878,7 +2896,7 @@ namespace GitUI
             this.scriptEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.scriptEvent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.scriptEvent.FormattingEnabled = true;
-            this.scriptEvent.Location = new System.Drawing.Point(107, 412);
+            this.scriptEvent.Location = new System.Drawing.Point(107, 414);
             this.scriptEvent.Name = "scriptEvent";
             this.scriptEvent.Size = new System.Drawing.Size(188, 21);
             this.scriptEvent.TabIndex = 19;
@@ -2979,7 +2997,7 @@ namespace GitUI
             this.helpLabel.AutoSize = true;
             this.helpLabel.BackColor = System.Drawing.SystemColors.Info;
             this.helpLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.helpLabel.Location = new System.Drawing.Point(561, 414);
+            this.helpLabel.Location = new System.Drawing.Point(561, 416);
             this.helpLabel.Name = "helpLabel";
             this.helpLabel.Size = new System.Drawing.Size(166, 15);
             this.helpLabel.TabIndex = 16;
@@ -2990,7 +3008,7 @@ namespace GitUI
             // 
             this.inMenuCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.inMenuCheckBox.AutoSize = true;
-            this.inMenuCheckBox.Location = new System.Drawing.Point(107, 468);
+            this.inMenuCheckBox.Location = new System.Drawing.Point(107, 470);
             this.inMenuCheckBox.Name = "inMenuCheckBox";
             this.inMenuCheckBox.Size = new System.Drawing.Size(188, 17);
             this.inMenuCheckBox.TabIndex = 15;
@@ -3045,7 +3063,7 @@ namespace GitUI
             this.argumentsTextBox.Location = new System.Drawing.Point(107, 299);
             this.argumentsTextBox.Name = "argumentsTextBox";
             this.helpProvider1.SetShowHelp(this.argumentsTextBox, true);
-            this.argumentsTextBox.Size = new System.Drawing.Size(620, 109);
+            this.argumentsTextBox.Size = new System.Drawing.Size(620, 111);
             this.argumentsTextBox.TabIndex = 8;
             this.argumentsTextBox.Text = "";
             this.argumentsTextBox.Enter += new System.EventHandler(this.argumentsTextBox_Enter);
@@ -3136,7 +3154,7 @@ namespace GitUI
             this.controlHotkeys.Location = new System.Drawing.Point(3, 3);
             this.controlHotkeys.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.controlHotkeys.Name = "controlHotkeys";
-            this.controlHotkeys.Size = new System.Drawing.Size(818, 481);
+            this.controlHotkeys.Size = new System.Drawing.Size(818, 479);
             this.controlHotkeys.TabIndex = 0;
             // 
             // splitContainer1
@@ -3209,24 +3227,16 @@ namespace GitUI
             this.diffFontDialog.AllowVerticalFonts = false;
             this.diffFontDialog.FixedPitchOnly = true;
             // 
-            // label58
+            // downloadMsysgit
             // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(32, 376);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(301, 13);
-            this.label58.TabIndex = 48;
-            this.label58.Text = "Focus control on hover to enable scroll without having to click";
-            // 
-            // focusControlOnHover
-            // 
-            this.focusControlOnHover.AutoSize = true;
-            this.focusControlOnHover.Location = new System.Drawing.Point(11, 376);
-            this.focusControlOnHover.Name = "focusControlOnHover";
-            this.focusControlOnHover.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.focusControlOnHover.Size = new System.Drawing.Size(15, 14);
-            this.focusControlOnHover.TabIndex = 47;
-            this.focusControlOnHover.UseVisualStyleBackColor = true;
+            this.downloadMsysgit.AutoSize = true;
+            this.downloadMsysgit.Location = new System.Drawing.Point(373, 91);
+            this.downloadMsysgit.Name = "downloadMsysgit";
+            this.downloadMsysgit.Size = new System.Drawing.Size(93, 13);
+            this.downloadMsysgit.TabIndex = 10;
+            this.downloadMsysgit.TabStop = true;
+            this.downloadMsysgit.Text = "Download msysgit";
+            this.downloadMsysgit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadMsysgit_LinkClicked);
             // 
             // FormSettings
             // 
@@ -3558,6 +3568,7 @@ namespace GitUI
         private ToolStripMenuItem toolStripMenuItem3;
         private Label label58;
         private CheckBox focusControlOnHover;
+        private LinkLabel downloadMsysgit;
 
     }
 }
