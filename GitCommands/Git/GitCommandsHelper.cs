@@ -2024,7 +2024,7 @@ namespace GitCommands
         public static string StageFiles(IList<GitItemStatus> files)
         {
             var gitCommand = new GitCommandsInstance();
-
+        	gitCommand.StreamOutput = true;
             var output = "";
 
             Process process1 = null;
@@ -2037,6 +2037,7 @@ namespace GitCommands
                     process1 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --add --stdin");
 
                 outputStream = new StreamWriter(process1.StandardInput.BaseStream, Settings.Encoding);
+            	outputStream.AutoFlush = true;
                 outputStream.WriteLine("\"" + FixPath(file.Name) + "\"");
             }
             if (process1 != null)
@@ -2109,7 +2110,7 @@ namespace GitCommands
                     continue;
                 if (process2 == null)
                     process2 = gitCommand.CmdStartProcess(Settings.GitCommand, "update-index --force-remove --stdin");
-                inputWriter = new StreamWriter(process2.StandardInput.BaseStream);
+				inputWriter = new StreamWriter(process2.StandardInput.BaseStream, Settings.Encoding);
                 inputWriter.WriteLine("\"" + FixPath(file.Name) + "\"");
             }
             if (process2 != null)

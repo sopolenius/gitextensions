@@ -149,8 +149,8 @@ namespace GitPlugin.Git
             startInfo.RedirectStandardError = true;
             if (useUTF8)
             {
-                startInfo.StandardOutputEncoding = Encoding.UTF8;
-                startInfo.StandardErrorEncoding = Encoding.UTF8;
+				startInfo.StandardOutputEncoding = new UTF8Encoding(false);
+                startInfo.StandardErrorEncoding = new UTF8Encoding(false);
             }
             startInfo.CreateNoWindow = true;
             startInfo.LoadUserProfile = true;
